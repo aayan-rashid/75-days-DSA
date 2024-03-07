@@ -1,0 +1,48 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        
+        int n = prices.length;
+        if (n == 0) {
+            return 0; // If no prices are given, return 0 profit.
+        }
+
+        int buy = prices[0]; // Initialize the minimum price to the first element
+        int maxProfit = 0; // Initialize the maximum profit to 0
+
+        for (int i = 1; i < n; i++) {
+            // Update the minimum price if the current price is lower
+            if (prices[i] < buy) {
+                buy = prices[i];
+            }
+            // Calculate the profit if selling the stock at the current price
+            int currentProfit = prices[i] - buy;
+            // Update the maximum profit if the current profit is higher
+            if (currentProfit > maxProfit) {
+                maxProfit = currentProfit;
+            }
+        }
+        return maxProfit;
+    }
+}
+
+//         int n = prices.length;
+//         int buy = 0;
+//         int sell = 0;
+//         int profit = 0;
+//         int net = 0;
+
+//         for (int i=0; i<n; i++)
+//         {
+//             buy = prices[i];
+
+//             for (int j=i+1; j<n; j++)
+//             {
+//                 profit = 0;
+//                 sell = prices[j];
+//                 profit = sell - buy;
+//                 net = Math.max(net, profit);
+//             }
+//         }
+//         return net;
+//     }
+// }

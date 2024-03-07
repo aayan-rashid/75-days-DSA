@@ -1,0 +1,14 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static void sortArray(ArrayList<Integer> arr, int n) {
+        // Write your code here.
+        int size = arr.size();
+        Integer[] a = new Integer[size];
+
+        
+
+        Arrays.sort(a);
+        System.out.println(Arrays.toString(a));
+    }
+}
