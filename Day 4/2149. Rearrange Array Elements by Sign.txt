@@ -1,0 +1,67 @@
+class Solution {
+    public int[] rearrangeArray(int[] a) {
+
+        int n = a.length;
+
+        int[] res = new int[n];
+        int pos = 0;
+        int neg = 1;
+
+        for (int i=0; i<n; i++)
+        {
+            if (a[i] > 0)
+            {
+                res[pos] = a[i];
+                pos +=2;
+            }
+            else
+            {
+                res[neg] = a[i];
+                neg +=2;
+            }
+        }
+
+        return res;
+
+        // int n =a.length;
+        // int even_count = 0;
+        // int odd_count = 0;
+
+
+        // int[] even = new int[n/2];
+        // int[] odd = new int[n/2];
+        // int[] res = new int[n];
+
+        // for (int i=0; i<n; i++)
+        // {
+        //     if (a[i] > 0)
+        //     {
+        //         even[even_count] = a[i];
+        //         even_count++;
+        //     }
+        //     else
+        //     {
+        //         odd[odd_count] = a[i];
+        //         odd_count++;
+        //     }
+        // }
+        // int res_even =0;
+        // int res_odd =0;
+        // for (int i=0; i<n; i++)
+        // {
+        //     if (i % 2 == 0)
+        //     {
+        //         res[i] = even[res_even];
+        //         res_even++;
+        //     }
+        //     else
+        //     {
+        //         res[i] = odd[res_odd];
+        //         res_odd++;
+        //     }
+        // }
+
+        // return res;
+        
+    }
+}
