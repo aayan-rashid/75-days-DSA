@@ -1,0 +1,115 @@
+class Solution {
+    public void rotate(int[][] matrix) {
+            
+
+        int n = matrix.length;
+
+        //transpose matrix
+        for (int i=0; i<n-1; i++)   
+        {
+            for (int j=i+1; j<n; j++)
+            {
+                if (i != j)
+                {
+                    int temp = matrix[i][j];
+                    matrix[i][j] = matrix[j][i];
+                    matrix[j][i] = temp;
+                }
+            }
+        }
+
+        
+        // for (int i=0; i<n; i++)
+        // {
+        //     for (int j=0; j<n; j++)
+        //     {
+        //         System.out.print(matrix[i][j] + " ");
+        //     }
+        //     System.out.println();
+        // }
+        
+
+        
+
+        // reverse elements in each row
+        for (int i=0; i<n; i++)
+        {
+        
+            int left = 0;
+            int right = n - 1;
+
+            while (left < right) 
+            {
+                // Swap elements at left and right indices
+                int temp = matrix[i][left];
+                matrix[i][left] = matrix[i][right];
+                matrix[i][right] = temp;
+
+                // Move the pointers towards the center
+                left++;
+                right--;
+            }
+        }
+                // int temp = matrix[i][(n-1)-i];
+                // matrix[i][(n-1)-i] = matrix[i][j];
+                // matrix[i][j] = temp;
+
+        
+
+
+        // for (int i=0; i<n; i++)
+        // {
+        //     for (int j=0; j<n; j++)
+        //     {
+        //         System.out.print(matrix[i][j] + " ");
+        //     }
+        //     System.out.println();
+        // }
+
+
+
+
+
+        // USING BRUTE-FORCE , A NEW RES[] ARRAY 
+
+        // int n = matrix.length;
+
+        // int[][] res = new int[n][n];
+
+        // for (int i=0; i<n; i++)
+        // {
+        //     for (int j=0; j<n; j++)
+        //     {
+        //         res[j][(n-1)-i] = matrix[i][j];
+        //     }
+        // }
+        
+        // System.out.print("[");
+        // for (int i=0; i<n; i++)
+        // {
+        //     System.out.print("[");
+        //     for (int j=0; j<n; j++)
+        //     {
+        //         if (j !=2){
+        //             System.out.print(res[i][j] + ",");
+        //         }    
+        //         else
+        //         {
+        //             System.out.print(res[i][j]);
+        //         }
+        //     }
+        //     if (i != 2){
+        //         System.out.print("],");
+        //     }    
+        //     else
+        //     {
+        //         System.out.print("]");
+        //     }
+        // }
+        // System.out.print("]");
+
+
+        
+        
+    }
+}
