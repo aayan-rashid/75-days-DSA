@@ -1,0 +1,24 @@
+public class Solution {
+    public static int subarraysWithSumK(int []a, int b) {
+        // Write your code here
+
+        // BRUTE  FORCE APPROACH GIVE O(N^2) COMPLEXITY 
+        int n = a.length;
+        int xor ;
+        int count = 0 ;
+
+        for (int i=0; i<n; i++)
+        {
+            xor =  0;
+            for (int j=i; j<n; j++)
+            {
+                xor ^= a[j];
+                if (xor == b)
+                {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}

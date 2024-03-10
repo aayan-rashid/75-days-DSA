@@ -1,0 +1,81 @@
+import java.util.*;
+public class Solution {
+    public static List< List < Integer > > triplet(int n, int []nums) {
+        // Write your code here.
+        Arrays.sort(nums);
+        //System.out.println(Arrays.toString(nums));
+
+        List<List<Integer>> list = new ArrayList<>();
+
+        for (int i=0; i< nums.length; i++)
+        {
+            if (i > 0 && nums[i] == nums[i-1])
+            {
+                continue;
+            }
+            
+            int low = i;
+            int mid = i+1;
+            int high = nums.length - 1;
+            
+            
+
+            while (mid < high)
+            {
+                int sum = nums[low] + nums[mid] + nums[high];
+
+                // if (mid > low + 1 && nums[mid] == nums[mid -1])
+                // {
+                //     mid++;
+                //     continue;
+                // }
+
+                // if (high < nums.length - 1 && nums[high] == nums[high+1])
+                // {
+                //     high--;
+                //     continue;
+                // }
+            
+                if (sum < 0)
+                {
+                    mid++;
+                }
+
+                if (sum > 0)
+                {
+                    high--;
+                }
+
+                if (sum == 0)
+                {
+                    List<Integer> row = new ArrayList<>();
+                    row.add(nums[low]);
+                    row.add(nums[mid]);
+                    row.add(nums[high]);
+
+                    list.add(row);
+
+                    // if (!list.contains(row))
+                    // {
+                    //     list.add(row);
+                    // }
+                    
+                    mid++;
+                    high--;
+
+                    while (mid < high &&nums[mid] == nums[mid-1])
+                    {
+                        mid++;
+                    }
+                    while (mid < high && nums[high] == nums[high + 1])
+                    {
+                        high--;
+                    }
+                }
+
+            }
+        }
+
+        return list;
+    }
+}
