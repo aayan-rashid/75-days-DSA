@@ -1,0 +1,93 @@
+class Solution {
+    public List<Integer> majorityElement(int[] v) {
+        
+        List<Integer> res = new ArrayList<>();
+
+        Arrays.sort(v);
+       // System.out.println(Arrays.toString(v));
+        int n = v.length;
+
+       if (n == 1)
+       {
+            res.add(v[0]);
+            return res;
+       }
+
+        //int f = (n/3) + 1;
+        int count = 1;
+      
+
+        for (int i=0; i<n-1; i++)
+        {
+            if (v[i] == v[i+1])
+            {
+                count++;
+            }
+            
+            else
+            {
+                if (count > (n/3) && !res.contains(v[i])){
+                     res.add(v[i]);
+                }  
+                count =1;    
+            }  
+            
+
+        }  
+
+        if (count > (n/3) && !res.contains(v[n - 1]))
+            {
+                res.add(v[n - 1]);
+                // count = 1;
+            } 
+
+        //Collections.reverse(list);
+
+        return res;
+
+
+        // List<Integer> res = new ArrayList<>();
+        
+        // int n = nums.length;
+        // if (n == 1)
+        // {
+        //     res.add(nums[0]);
+        //     return res;
+        // }
+        // //int f = (n/3) + 1;  
+        // int count = 1;
+
+        // Arrays.sort(nums);
+
+        // for (int i=0; i<n; i++)
+        // {
+        //     for (int j=i+1; j<n; j++)
+        //     {
+        //         if (nums[i] == nums[j])
+        //         {
+        //             count++;
+        //         }
+        //         else
+        //         {
+        //             if (count > (n/3) && !res.contains(nums[i]))
+        //             {
+        //                 res.add(nums[i]);
+        //             }
+        //             count=1;
+        //             break;
+                    
+        //         }
+        //     }
+        //     if (res.size() == 2)
+        //     {
+        //         break;
+        //     }
+        //     //count = 1;
+        // }
+        // if (count > (n/3) && !res.contains(nums[n - 1])) {
+        //     res.add(nums[n - 1]);
+        // }
+
+        // return res;
+    }
+}

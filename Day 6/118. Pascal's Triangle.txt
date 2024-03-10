@@ -1,0 +1,26 @@
+class Solution {
+    public List<List<Integer>> generate(int n) 
+    {
+        List<List<Integer>> list = new ArrayList<>();
+
+       if (n == 0)
+       {
+           return list;
+       }
+        // list.get(0).add(1);
+        
+        for (int i=0; i<n; i++)
+        {
+            List<Integer> row = new ArrayList<>();
+            list.get(i).set(0, 1);
+            list.get(i).set(i, 1);
+
+            for (int j=1; j<i; j++)
+            {
+                list.get(i).get(j) = list.get(i-1).get(j-1) + list.get(i-1).get(j);
+            }
+        }
+    }
+
+    return list; 
+}
