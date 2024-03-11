@@ -1,0 +1,101 @@
+import java.util.*;
+
+public class Solution {
+    public static void mergeTwoSortedArraysWithoutExtraSpace(long []a, long []b){
+        // Write your code here.
+
+        int m = a.length;
+        int n = b.length;
+
+        long[] ans = new long[m + n];
+        int pos = 0;
+
+        int left = 0;
+        int right = 0;
+
+        while (left < m && right < n)
+        {
+            if (a[left] <= b[right])
+            {
+                ans[pos++] = a[left++];
+            }
+            else
+            {
+                ans[pos++] = b[right++];
+            }
+        }   
+
+        while (left < m)
+        {
+            ans[pos++] = a[left++];
+        }
+
+        while (right < n)
+        {
+            ans[pos++] = b[right++];
+        }
+
+        //System.out.println(Arrays.toString(ans));
+
+        int count =0;
+        for (int i=0; i<m; i++)
+        {
+            a[i] = ans[count++];
+        }
+
+        for (int j=0; j<n; j++)
+        {
+            b[j] = ans[count++];
+        }
+        
+
+
+
+        // int n = a.length;
+        // int m = b.length;
+        // boolean ispresent ;
+        // //List<Integer> res = new ArrayList<>();
+        // long[] res = new long[n+m];
+        // int count = 0;
+
+        // for (int i=0; i<n; i++)
+        // {
+        //     ispresent = false;
+        //     for (int j=0; j<m; j++)
+        //     {
+        //         if (a[i] == b[j])
+        //         {
+        //             ispresent = true;
+        //             break;
+        //         }
+                
+        //     }
+        //     if (!ispresent)
+        //     {
+        //         //res.add(a[i]);
+        //         res[count++] = a[i];
+        //     }
+        // }
+
+        // for (int i=0; i<m; i++)
+        // {
+        //     ispresent = false;
+        //     for (int j=0; j<n; j++)
+        //     {
+        //         if (b[i] == a[j])
+        //         {
+        //             ispresent =true;
+        //             break;
+        //         }
+                
+        //     }
+        //     if (!ispresent)
+        //     {
+        //         //res.add(b[i]);
+        //         res[count++] = b[i];
+        //     }
+        // }
+        // Arrays.sort(res);
+        //System.out.println(Arrays.toString(res));
+    }
+}
