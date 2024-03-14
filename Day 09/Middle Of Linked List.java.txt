@@ -1,0 +1,110 @@
+import java.awt.HeadlessException;
+
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node {
+     public int data;
+     public Node next;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+     }
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+     }
+     Node(int data, Node next)
+     {
+         this.data = data;
+         this.next = next;
+     }
+ }
+
+ *****************************************************************/
+
+public class Solution
+{
+    public static Node findMiddle(Node head)
+    {
+        // Write your code here.
+
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null)
+        {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+
+        // Node temp = head;
+
+        // int cnt = 0; 
+        // while (temp != null) 
+        // {
+        //     cnt++;
+        //     temp = temp.next;
+        // }
+
+        // cnt = (cnt/2) + 1;
+        // for (int i=1; i < cnt; i++)
+        // {
+        //     head = head.next;
+        // }
+        
+        // return head;
+
+
+
+
+
+
+
+
+
+
+        // Node fast = new Node(0);
+        // Node slow = new Node(0);
+
+        // fast = head;
+        // slow = head;
+
+
+        // // while (fast != null && fast.next != null)
+        // // {
+        // //     fast = fast.next.next;
+        // //     slow = slow.next;
+        // // }
+        // // return slow;
+
+        // int cnt = 0;
+        // while (fast.next != null)
+        // {
+        //     fast = fast.next.next;
+        //     cnt++;
+        // }
+        // // if (fast.next != null)
+        // // {
+        // //     cnt++;
+        // // }
+
+        // int pnt = 0;
+        // while (slow.next != null)
+        // {
+        //     slow = slow.next;
+        //     pnt++;
+        //     if (pnt == cnt)
+        //     {
+        //         break;
+        //     }
+        // }
+        // return slow;
+    }
+}
