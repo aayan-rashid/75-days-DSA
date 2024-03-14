@@ -1,0 +1,129 @@
+
+
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node {
+     public int data;
+     public Node next;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+     }
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+     }
+     Node(int data, Node next)
+     {
+         this.data = data;
+         this.next = next;
+     }
+ }
+
+ *****************************************************************/
+
+public class Solution
+{
+    public static Node segregateEvenOdd(Node head)
+    {
+        // Write Your Code Here.
+
+        // USING ARRAYS TO STORE VALUES AND PLACING THEM IN LL
+
+        Node temp = head;
+
+        int cnt = 0;
+        while (temp != null)
+        {
+            cnt++;
+            temp = temp.next;
+        }
+        int[] arr = new int[cnt];
+
+        temp = head;
+
+        int ind = 0;
+        while (temp != null) 
+        {
+            if (temp.data % 2 == 0)
+            {
+                arr[ind] = temp.data;
+                ind++;
+                temp = temp.next;
+            }
+            else
+            {
+                temp = temp.next;
+            }
+        }
+        
+        temp = head;
+
+        while (temp != null) 
+        {
+            if (temp.data % 2 != 0) 
+            {
+                arr[ind] = temp.data;
+                ind++;
+                temp = temp.next;
+            }  
+            else
+            {
+                temp = temp.next;
+            }
+        }
+
+        temp = head;
+        ind = 0;
+        while (temp != null)
+        {
+            temp.data = arr[ind];
+            ind++;
+            temp = temp.next;
+        }
+
+        return head;
+
+
+
+
+
+
+        // USING TWO EVEN AND ODD LL AND COMBINING THEM
+
+        // Node test = new Node();
+        // Node temp = head;
+        // Node even = head;
+        // Node odd = head;
+
+        // while (temp != null)
+        // {
+        //     if (temp.data % 2 == 0)
+        //     {
+        //         even.data = temp.data;
+        //         even = even.next;
+        //     }
+        //     else
+        //     {
+        //         odd.data = temp.data;
+        //         odd = odd.next;
+        //     }
+        //     temp = temp.next;
+        // }
+        
+
+        // Node res = even;
+        // while (even.next != null)
+        // {
+        //     even = even.next;
+        // }
+        // even.next = odd;
+
+        // return res;
+    }
+}

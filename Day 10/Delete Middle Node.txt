@@ -1,0 +1,84 @@
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node {
+     public int data;
+     public Node next;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+     }
+
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+     }
+
+     Node(int data, Node next)
+     {
+         this.data = data;
+         this.next = next;
+     }
+ };
+
+ *****************************************************************/
+
+public class Solution {
+    public static Node deleteMiddle(Node head) 
+    {
+        // Write your code here.
+
+        Node temp = head;
+
+        int cnt = 0;
+        while (temp != null)
+        {
+            cnt++;
+            temp = temp.next;
+        }
+        temp = head;
+
+        if (head == null || head.next == null)
+        {
+            return null;
+        }
+
+        if (cnt % 2 == 0)
+        {
+            cnt = (cnt/2) + 1;
+            int pos = 0;
+            while (temp != null && temp.next != null)
+            {
+                pos++;
+                if (pos + 1 == cnt)
+                {
+                    temp.next = temp.next.next;
+                    break;
+                }
+                temp = temp.next;
+            }
+        }
+        else
+        {
+            cnt = (cnt + 1) / 2;
+            int pos = 0;
+            while (temp != null && temp.next != null)
+            {
+                pos++;
+                if (pos + 1 == cnt)
+                {
+                    temp.next = temp.next.next;
+                    break;
+                }
+                temp = temp.next;
+            }
+        }
+
+        return head;
+        
+    }
+}
