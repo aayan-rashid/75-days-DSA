@@ -1,0 +1,100 @@
+import java.util.Arrays;
+
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node {
+     public int data;
+     public Node next;
+    
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+     }
+    
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+     }
+    
+     Node(int data, Node next)
+     {
+         this.data = data;
+         this.next = next;
+     }
+ }
+
+ *****************************************************************/
+
+public class Solution {
+    public static boolean isPalindrome(Node head) {
+        // write your code here.
+
+
+        // using arrays to store values and check
+
+        Node temp = head;
+        int cnt = 0;
+
+        while (temp != null)
+        {
+            cnt++;
+            temp = temp.next;
+        }
+        int[] arr = new int[cnt];
+
+        temp = head;
+
+        int val = 0;
+        while (temp != null)
+        {
+            arr[val++] = temp.data;
+            temp = temp.next;
+        }
+
+        temp = head;
+
+        int p = cnt-1;
+        while (temp != null)
+        {
+            if (temp.data != arr[p])
+            {
+                return false;
+            }
+            else
+            {
+                temp = temp.next;
+                p--;
+            }
+        }
+        
+        return true;
+        
+
+
+        // using reverse list method
+
+        // Node temp = head;
+        // Node prev = null;
+
+        // while(temp != null)
+        // {
+        //     Node front = temp.next;
+        //     temp.next = prev;
+        //     prev = temp;
+        //     temp = front;
+        // }
+
+        // if (prev == head)
+        // {
+        //     return true;
+        // }
+        // else
+        // {
+        //     return false;
+        // }
+    }
+}
