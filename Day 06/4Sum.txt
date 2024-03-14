@@ -1,0 +1,169 @@
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) 
+    {
+        // 2-POINTER APPROACH
+        
+        Arrays.sort(nums);
+        //System.out.println(Arrays.toString(nums));
+
+        List<List<Integer>> list = new ArrayList<>();
+
+        for (int i=0; i< nums.length; i++)
+        {
+            if (i>0 && nums[i] == nums[i-1])
+            {
+                continue;
+            }
+
+            for (int j=i+1; j< nums.length; j++)
+            {
+                if (j > i+1 && nums[j] == nums[j-1])
+                {
+                    continue;
+                }
+
+                int k = j+1;
+                int l = nums.length - 1;
+
+                while (k < l)
+                {
+                    long sum = nums[i]; //+ nums[j] + nums[k] + nums[l];
+                    sum += nums[j];
+                    sum += nums[k];
+                    sum += nums[l];
+                    //System.out.println(sum + " : " + i + j + k + l);
+
+                    if (sum < target)
+                    {
+                        k++;
+                    }
+
+                    if (sum > target)
+                    {
+                        l--;
+                    }
+
+                    if (sum == target)
+                    {
+                        List<Integer> row = new ArrayList<>();
+                        row.add(nums[i]);
+                        row.add(nums[j]);
+                        row.add(nums[k]);
+                        row.add(nums[l]);
+
+                        list.add(row);
+
+                        k++;
+                        l--;
+
+                        while (k<l && nums[k] == nums[k-1])
+                        {
+                            k++;
+                        }
+
+                        while (k<l && nums[l] == nums[l+1])
+                        {
+                            l--;
+                        }
+                    }
+                }
+            }
+        }
+
+        return list;
+
+
+
+
+
+
+
+
+        // BRUTE - FORCE O(n^3)
+        // Arrays.sort(nums);
+
+        // List<List<Integer>> list = new ArrayList<>();
+
+        // for (int i=0; i<nums.length; i++)
+        // {
+        //     for (int j = i+1; j< nums.length; j++)
+        //     {
+        //         for (int k = j+1; k< nums.length; k++)
+        //         {
+                    
+        //             long sum = nums[i] + nums[j] + nums[k];
+        //             int l = k+1;
+        //             while (l < nums.length)
+        //             {
+        //                 if (nums[l] == target - sum)
+        //                 {
+        //                     List<Integer> row = new ArrayList<>();
+        //                     row.add(nums[i]);
+        //                     row.add(nums[j]);
+        //                     row.add(nums[k]);
+        //                     row.add(nums[l]);
+
+        //                     if (!list.contains(row))
+        //                     {
+        //                         list.add(row);
+        //                     }
+        //                     l++;
+        //                 }
+        //                 else
+        //                 {
+        //                     l++;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
+        // return list;            
+ 
+
+
+
+
+
+
+
+
+
+        // BRUTE - FORCE APPROACH O(n^4)
+        // Arrays.sort(nums);
+
+        // List<List<Integer>> list = new ArrayList<>();
+
+        // for (int i=0; i<nums.length; i++)
+        // {
+        //     for (int j = i+1; j< nums.length; j++)
+        //     {
+        //         for (int k = j+1; k< nums.length; k++)
+        //         {
+        //             for (int l = k+1; l< nums.length; l++)
+        //             {
+        //                 long sum = nums[i] + nums[j] + nums[k] + nums[l];
+        //                 //System.out.println(sum);
+
+        //                 if (sum == target)
+        //                 {
+        //                     List<Integer> row = new ArrayList<>();
+        //                     row.add(nums[i]);
+        //                     row.add(nums[j]);
+        //                     row.add(nums[k]);
+        //                     row.add(nums[l]);
+
+        //                     if (!list.contains(row))
+        //                     {
+        //                         list.add(row);
+        //                     }    
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
+        // return list;
+    }
+
+}

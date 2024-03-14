@@ -1,0 +1,32 @@
+public class Solution {
+    public static int getLongestZeroSumSubarrayLength(int []arr){
+        // Write your code here.
+
+        int n = arr.length;
+        int res ;
+
+        for (int i=0; i<n; i++)
+        {
+            res = 0;
+            int sum = arr[i];
+
+            for (int j=i+1; j<n; j++)
+            {
+                if (arr[i] == 0)
+                {
+                    if (j == 0)
+                    {
+                        res++;
+                    }
+                }
+                
+                sum += arr[j];
+                if (sum == 0)
+                {
+                    res = Math.max(res,j-i+1);
+                }
+            }
+        }
+        return res;
+    }
+}
