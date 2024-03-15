@@ -1,0 +1,178 @@
+import java.util.* ;
+import java.io.*; 
+/****************************************************************
+
+    Following is the class structure of the Node class:
+
+    class LinkedListNode {
+        int data;
+        LinkedListNode next;
+        
+        public LinkedListNode(int data) {
+            this.data = data;
+        }
+    }
+
+*****************************************************************/
+
+
+public class Solution {
+
+    static LinkedListNode addTwoNumbers(LinkedListNode head1, LinkedListNode head2) {
+        // Write your code here.
+        
+        LinkedListNode temp1 = head1;
+        LinkedListNode temp2 = head2;
+        LinkedListNode res = new LinkedListNode(-1);
+        LinkedListNode ans = res;
+
+        int carry = 0;
+        while (temp1 != null || temp2 != null)
+        {
+            int sum = carry;
+            if (temp1 != null)
+            {
+                sum += temp1.data;
+            }
+            
+            if (temp2 != null)
+            {
+                sum += temp2.data;
+            }
+
+            if (sum >= 10)
+            {
+                sum %= 10;
+                carry = 1;
+            }
+            
+            else
+            {
+                carry = 0;
+            }
+
+            LinkedListNode test = new LinkedListNode(sum);
+            res.next = test;
+            res = res.next;
+            if (temp1 != null)
+            {
+                temp1 = temp1.next;
+            }
+            if (temp2 != null) 
+            {
+                temp2 = temp2.next;
+            }  
+        }
+
+        if (carry == 1)
+        {
+            LinkedListNode carryNode = new LinkedListNode(1);
+            res.next = carryNode;
+        }
+
+        return ans.next;
+        
+
+
+
+
+
+
+
+
+
+        
+        // REVERSING LL (NOT OPTIMAL)
+        
+        // LinkedListNode temp = head1;
+        // LinkedListNode prev1 = null;
+
+        // while (temp != null)
+        // {
+        //     LinkedListNode front = temp.next;
+        //     temp.next = prev1;
+        //     prev1 = temp;
+        //     temp = front;
+        // }
+
+        // temp = head2;
+        // LinkedListNode prev2 = null;
+        // while (temp != null)
+        // {
+        //     LinkedListNode front = temp.next;
+        //     temp.next = prev2;
+        //     prev2 = temp;
+        //     temp = front;
+        // }
+
+        // if (prev1 == null)
+        // {
+        //     return prev2;
+        // }
+
+        // if (prev2 == null)
+        // {
+        //     return prev1;
+        // }
+
+        // LinkedListNode res = new LinkedListNode(0);
+        // while (prev1 != null || prev2 != null)
+        // {
+        //     res.data = prev1.data + prev2.data;
+        //     res = res.next;
+        //     prev1 = prev1.next;
+        //     prev2 = prev2.next;
+        // }
+
+        // while (prev1 != null)
+        // {
+        //     res.data = prev1.data;
+        //     res = res.next;
+        //     prev1 = prev1.next;
+        // }
+
+        // while (prev2 != null)
+        // {
+        //     res.data = prev2.data;
+        //     res = res.next;
+        //     prev2 = prev2.next;
+        // }
+
+        // return res;
+
+
+        
+
+        
+        // int res1 = SumofElements(head1);
+        // int res2 = SumofElements(head2);
+
+        // LinkedListNode temp = head1;
+        // int cnt1 = 0;
+        // while (temp != null)
+        // {
+        //     cnt1++;
+        //     temp = temp.next;
+        // }
+
+        // temp = head2;
+        // int cnt2 = 0;
+        // while (temp != null)
+        // {
+        //     cnt2++;
+        //     temp = temp.next;
+        // }
+
+        // int[] arr = new int[cnt1 + cnt2];
+
+        // for (int i = cnt1 - 1; i > 0 ; i++)
+        // {
+        //     arr[pos++] = cnt1/(i * 10);
+        // }
+
+
+        
+    }
+
+    
+}
