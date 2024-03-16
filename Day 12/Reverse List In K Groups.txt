@@ -1,0 +1,88 @@
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node {
+     public int data;
+     public Node next;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+     }
+
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+     }
+
+     Node(int data, Node next)
+     {
+         this.data = data;
+         this.next = next;
+     }
+ };
+
+ *****************************************************************/
+
+public class Solution {
+    private static Node getKthNode(Node temp, int k)
+    {
+        while (temp != null && k != 1)
+        {
+            temp = temp.next;
+            k--;
+        }
+        return temp;
+    }
+
+    private static Node reverse(Node temp)
+    {
+        Node t = temp;
+        Node prevNode = null;
+
+        while(t != null)
+        {
+            Node front = t.next;
+            t.next = prevNode;
+            prevNode = t;
+            t = front;
+        }
+
+        return prevNode;
+    }
+    public static Node kReverse(Node head, int k) {
+        // Write your code here.
+
+        Node temp = head;
+        Node prev = null;
+
+        while (temp != null)
+        {
+            Node KthNode = getKthNode(temp, k);
+            if (KthNode == null)
+            {
+                prev.next = temp;
+                break;
+            }
+            Node newNode = KthNode.next;
+            KthNode.next = null;
+
+            reverse(temp);
+
+            if (temp == head)
+            {
+                head = KthNode;
+            }
+            else
+            {
+                prev.next = KthNode;   
+            }
+            prev = temp;
+            temp = newNode;
+        }
+        return head;
+    }
+}
