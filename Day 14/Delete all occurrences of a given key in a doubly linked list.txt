@@ -1,0 +1,83 @@
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node {
+     public int data;
+     public Node next;
+     public Node prev;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+         this.prev = null;
+     }
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+         this.prev = null;
+     }
+     Node(int data, Node next, Node prev)
+     {
+         this.data = data;
+         this.next = next;
+         this.prev = prev;
+     }
+ }
+
+ *****************************************************************/
+
+public class Solution {
+    public static Node deleteAllOccurrences(Node head, int k) {
+        // Write your code here.
+
+        if (head == null || (head.next == null && head.data == k))
+        {
+            return null;
+        }
+
+        Node front = null;
+        Node back = null;
+
+        while (head.next != null && head.data == k)
+        {
+            back = head;
+            head = head.next;
+            head.prev = null;
+            back.next = null;
+        }
+
+        if (head.data == k)
+        {
+            return null;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null)
+        {
+            if (temp.data == k)
+            {
+                back = temp.prev;
+                front = temp.next;
+                front.prev = back;
+                back.next = front;
+                temp = front;
+                continue;
+            }
+            temp = temp.next;
+        }
+
+        if (temp.data == k)
+        {
+            back = temp.prev;
+            temp.prev = null;
+            back.next = null;
+        }
+
+        return head;
+
+    }
+}
