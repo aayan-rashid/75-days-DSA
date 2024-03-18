@@ -1,0 +1,146 @@
+/********************************************************
+
+    Following is the class structure of the Node class:
+    
+    class Node
+    {
+        public:
+            int data;
+            Node next;
+
+            // add a previous link
+            Node prev;
+
+            Node(int data)
+            {
+                this.data = data;
+                this.next = null;
+                
+                // add a previous pointer
+                this.prev = null;
+            }
+    };
+
+********************************************************/
+
+public class Solution {
+    public static Node uniqueSortedList(Node head) {
+        // Write your code here.
+
+        Node temp = head;
+        
+
+        while (temp != null && temp.next != null)
+        {
+            Node sec = temp.next;
+            while (sec != null && temp.data = sec.data)
+            {
+                sec = sec.next;
+            }
+            temp.next = sec;
+            if (sec != null)
+            {
+                sec.prev = temp;
+            }
+            temp = temp.next;
+        }
+
+        return head;
+
+
+
+
+
+
+
+
+
+
+
+
+        // Node front = null;
+
+        // if (head == null || head.next == null)
+        // {
+        //     return head;
+        // }
+
+        // while (head.data == head.next.data)
+        // {
+        //     front = head.next;
+        //     head.next = null;
+        //     head = front;
+        // }
+
+        // Node temp = head;
+        // front = null;
+        // Node node = null;
+
+        // while (temp.next.next != null)
+        // {
+        //     if (temp.data == temp.next.data)
+        //     {
+        //         front = temp.next;
+        //         node = temp.next.next;
+        //         temp.next = node;
+        //         front.next = null;
+        //         temp = node;
+        //     }
+        //     temp = temp.next;
+        // }
+
+        // if (temp.data == temp.next.data)
+        // {
+        //     temp.next = null;
+        // }
+
+
+
+        // return head;
+
+
+
+
+        // while (temp.next != null)
+        // {
+        //     if (temp.data == temp.next.data && temp.prev == null)
+        //     {
+        //         front = temp.next;
+        //         front.prev = null;
+        //         temp.next = null;
+
+        //         temp = front;
+        //         continue;
+        //     }
+            
+        //     if (temp.data == temp.next.data && temp.prev != null)
+        //     {
+        //         front = temp.next;
+        //         back = temp.prev;
+
+        //         front.prev = back;
+        //         back.next = front;
+
+        //         temp.next = null;
+        //         temp.prev = null;
+
+        //         temp = front;
+        //         continue;
+        //     }
+
+        //     temp = temp.next;
+        // }
+
+        // return head;
+
+
+
+
+
+
+
+
+
+
+    }
+}

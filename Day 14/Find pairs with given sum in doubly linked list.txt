@@ -1,0 +1,88 @@
+import java.util.* ;
+import java.io.*; 
+/****************************************************************
+
+    Following is the class structure of the Node class:
+
+      class Node<T> {
+        T data;
+        Node<T> next;
+        Node<T> prev;
+
+        public Node(T data) {
+            this.data = data;
+        }
+    }
+
+*****************************************************************/
+
+public class Solution {
+
+    public static boolean findPair(Node<Integer> head, int k) {
+        // Write your code here.
+
+        if (head == null)
+        {
+            return false;
+        }
+
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+        Node<Integer> temp = head;
+        Node<Integer> left = head;
+        Node<Integer> right = head;
+
+        while (right.next != null)
+        {
+            right = right.next;
+        }
+
+        while (left != null && left.data < right.data)
+        {
+            if (left.data + right.data < k)
+            {
+                left = left.next;
+            }
+            else if (left.data + right.data > k)
+            {
+                right = right.prev;
+            }
+            else
+            {
+                list.add(new ArrayList<>(Arrays.asList(left.data, right.data)));
+                right = right.prev;
+                left = left.next;
+            }
+        }
+
+        return !list.isEmpty();
+
+
+
+        // O(n^2) time complexity
+
+        // while (temp != null)
+        // {
+        //     front = temp.next;
+
+        //     while (front != null)
+        //     {
+        //        if (front.data +  temp.data == k && (temp.data + front.data) <= k) 
+        //        {
+        //            list.add(temp.data, front.data);
+        //        }
+        //        front = front.next;
+        //     }
+        //     temp = temp.next;
+        // }
+
+        // if (list.size() > 0 )
+        // {
+        //     return true;
+        // }
+
+        // return false;
+
+
+    }
+
+}
