@@ -1,0 +1,128 @@
+import java.util.* ;
+import java.io.*; 
+/*************************************************************
+
+Following is the class structure of the Node class:
+
+    class Node {
+		public int data;
+		public Node next;
+
+		Node(int data) {
+			this.data = data;
+			this.next = null;
+	  	}
+    }
+
+*************************************************************/
+
+public class Solution {
+
+	private static int helper(Node temp)
+	{
+		if (temp == null)
+		{
+			return 1;
+		}
+
+		int carry = helper(temp.next);
+
+		temp.data = temp.data + carry;
+		if (temp.data < 10)
+		{
+			return 0;
+		}
+		temp.data = 0;
+		return 1;
+	}
+
+
+	public static Node addOne(Node head) 
+	{
+		// Write your code here.
+
+		// USING RECURSION
+		Node temp = head;
+
+		int carry = helper(temp);
+		if (carry == 1)
+		{
+			Node newHead = new Node(1);
+			newHead.next = head;
+			return newHead;
+		}
+		return head;
+
+
+
+
+
+
+
+
+		// USING 2 REVERSES METHOD
+
+		// Node temp = head;
+		// Node res = head;
+		// Node prev = null;
+
+		// while(res != null)
+		// {
+		// 	Node front = res.next;
+		// 	res.next = prev;
+		// 	prev = res;
+		// 	res = front;        	
+		// }
+
+		// if (prev.data != 9)
+		// {
+		// 	prev.data++;
+			
+		// }
+		// else
+		// {
+		// 	Node curr = prev;
+		// 	while (curr != null)
+		// 	{
+		// 		if (curr.data == 9)
+		// 		{
+		// 			curr.data = 0;
+		// 		}
+		// 		else
+		// 		{
+		// 			curr.data += 1;
+		// 			break;
+		// 		}
+		// 		curr = curr.next;
+		// 	}
+			
+		// }
+
+		// // traverse to last element if it was 9 and replaced
+		// // with 0 then add 1 to next
+		// temp = prev; 
+		// while (temp.next != null)
+		// {
+		// 	temp = temp.next;
+		// }
+		// if (temp.data == 0)
+		// {
+		// 	Node supp = new Node(1);
+		// 	temp.next = supp;
+		// }
+
+		// // reverse prev again to get original list
+		// Node test = prev;
+		// Node ans = null;
+
+		// while(test != null)
+		// {
+		// 	Node forward = test.next;
+		// 	test.next = ans;
+		// 	ans = test;
+		// 	test = forward;        	
+		// }
+
+		// return ans;
+	}
+}

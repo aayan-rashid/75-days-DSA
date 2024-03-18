@@ -1,0 +1,96 @@
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node {
+     public int data;
+     public Node next;
+     public Node child;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+         this.child = null;
+     }
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+         this.child = null;
+     }
+     Node(int data, Node next, Node child)
+     {
+         this.data = data;
+         this.next = next;
+         this.child = child;
+     }
+ }
+
+ *****************************************************************/
+import java.util.*;
+public class Solution {
+
+    private static Node sortList(Node head)
+    {
+        Node temp = head;
+
+        int cnt = 0;
+        while (temp != null)
+        {
+            cnt++;
+            temp = temp.child;
+        }
+
+        temp = head;
+
+        int[] arr = new int[cnt];
+        int pos = 0;
+        while (temp != null)
+        {
+            arr[pos] = temp.data;
+            pos++;
+            temp = temp.child;
+        }
+        
+        Arrays.sort(arr);
+
+        temp = head;
+        pos = 0;
+        while (temp != null)
+        {
+            temp.data = arr[pos];
+            pos++;
+            temp = temp.child;
+        }
+
+        return head;
+    }
+    public static Node flattenLinkedList(Node head) {
+        //Write your code here
+
+        Node down = head;
+        Node right = head;
+
+        if (head == null)
+        {
+            return head;
+        }
+
+        while (right != null)
+        {
+            while (down.child != null)
+            {
+                down = down.child;
+            }
+
+            right = right.next;
+            down.child = right;
+            
+            down = down.child;
+            
+        }  
+
+        return sortList(head);
+    }
+}

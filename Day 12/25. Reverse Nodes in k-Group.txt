@@ -1,0 +1,109 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+
+    private static ListNode getKthNode(ListNode temp, int k)
+    {
+        while (temp != null && k != 1)
+        {
+            temp = temp.next;
+            k--;
+        }
+        return temp;
+    }
+
+    private static ListNode reverse(ListNode temp)
+    {
+        ListNode t = temp;
+        ListNode prevNode = null;
+
+        while(t != null)
+        {
+            ListNode front = t.next;
+            t.next = prevNode;
+            prevNode = t;
+            t = front;
+        }
+
+        return prevNode;
+    }
+
+    public ListNode reverseKGroup(ListNode head, int k) 
+    {
+        ListNode temp = head;
+        ListNode prev = null;
+
+        while (temp != null)
+        {
+            ListNode KthNode = getKthNode(temp, k);
+            if (KthNode == null)
+            {
+                prev.next = temp;
+                break;
+            }
+            ListNode newNode = KthNode.next;
+            KthNode.next = null;
+
+            reverse(temp);
+
+            if (temp == head)
+            {
+                head = KthNode;
+            }
+            else
+            {
+                prev.next = KthNode;   
+            }
+            prev = temp;
+            temp = newNode;
+        }
+        return head;
+        
+        
+        
+        
+        
+        
+        
+        // ListNode t1 = head;
+        // ListNode cont = t1;
+        
+        // while (t1 != null && k != 1)
+        // {
+        //     ListNode res = t1;
+        //     t1 = t1.next;
+        //     k--;
+        // }
+        // cont = t1.next;
+        // t1.next = null;
+        
+        // ListNode newHead = reverse(res);
+        // head = newHead;
+        
+        // int cnt = length(t1);
+
+        // while (t1 != null && cnt >= k)
+        // {
+        //     if (k != 0)
+        //     {
+        //         while (t1 != null && k != 0)
+        //         {
+        //             t1 = t1.nextt;
+
+        //         }
+        //         t1 = reverse(t1, k);
+        //     }
+        // }   
+
+
+
+    }
+}
