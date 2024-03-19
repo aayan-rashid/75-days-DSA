@@ -1,0 +1,94 @@
+
+public class Solution {
+    public static int calcGCD(int n, int m)
+    {
+        // Write your code here.
+
+        // Using Array O(n)
+
+        // int lim = 0;
+        // if (n > m)
+        // {
+        //     lim = n;
+        // }
+        // else
+        // {
+        //     lim = n;
+        // }
+        // int res = 0;
+        // for (int i =1; i<= lim; i++)
+        // {
+        //     if (n % i == 0 && m % i == 0)
+        //     {
+        //         res = i;
+        //     }
+        // }
+
+        // return res;
+
+
+        while (n > 0 && m > 0)
+        {
+            if (n > m)
+            {
+                n = n % m;
+            }
+            else
+            {
+                m = m % n;
+            }
+        }
+
+        if (n == 0)
+        {
+            return m;
+        }
+        else
+        {
+            return n;
+        }
+
+
+
+
+
+
+        // Using arraylist to store common factors and sorting then returning last value
+
+        // ArrayList<Integer> list1 = new ArrayList<>();
+        // ArrayList<Integer> list2 = new ArrayList<>();
+
+        // for (int i = 1; i<= n; i++)
+        // {
+        //     if (n % i == 0)
+        //     {
+        //         list1.add(i);
+        //     }
+        // }
+
+        // for (int i = 0; i<= list1.size() -1 ; i++)
+        // {
+        //     if (m % list1.get(i) == 0)
+        //     {
+        //         list2.add(list1.get(i));
+        //     }
+        // }
+        // Collections.sort(list2);
+
+        // return list2.get(list2.size() - 1);
+
+
+        // ArrayList<Integer> list3 = new ArrayList<>();
+
+        // for (int i : list1)
+        // {
+        //     if (list2.contains(i))
+        //     {
+        //         list3.add(i);
+        //     }
+        // }
+        // Collections.sort(list3);
+
+        // return list3.get(list3.size()-1);
+    }
+}

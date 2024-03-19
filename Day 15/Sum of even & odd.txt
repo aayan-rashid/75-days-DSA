@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		// Write your code here
+		Scanner sc = new Scanner(System.in);
+
+		int n = sc.nextInt();
+
+		int evensum = 0;
+		int oddsum = 0;
+
+		while (n != 0)
+		{
+			int r = n % 10;
+			if (r % 2 == 0)
+			{
+				evensum += r;
+			}
+			else
+			{
+				oddsum += r;
+			}
+			n /= 10;
+		}
+		
+		System.out.println(evensum + " " +  oddsum);
+
+
+	}
+}
