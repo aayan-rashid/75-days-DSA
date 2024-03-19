@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		// Write your code here
+		Scanner sc = new Scanner(System.in);
+
+		int n = sc.nextInt();
+		int num = n;
+		int length = 0;
+		while (num != 0)
+		{
+			length++;
+			num /= 10;
+		}
+
+		num = n;
+		int sum = 0;
+		int r = 0;
+
+		while (num != 0)
+		{
+			r = num % 10;
+			//r = (int)Math.pow(r,length);
+			sum += (int)Math.pow(r,length);
+			num /= 10;
+		}
+
+		if (sum == n)
+		{
+			System.out.println(true);
+		}
+		else
+		{
+			System.out.println(false);
+		}
+		
+	}
+}

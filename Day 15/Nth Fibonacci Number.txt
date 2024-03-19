@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+public class Solution {
+
+	public static int fibonacci(int n)
+	{
+		if (n == 0)
+		{
+			return 0;
+		}
+		else if (n == 1 || n == 2)
+		{
+			return 1;
+		}
+		else
+		{
+			return fibonacci(n-1) + fibonacci(n -2);
+		}
+		
+	}
+
+
+	public static void main(String[] args) {
+		
+		/* Your class should be named Solution.
+	 	* Read input as specified in the question.
+	 	* Print output as specified in the question.
+		*/
+
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		sc.close();
+
+
+		int res = fibonacci(n);
+		System.out.println(res);
+
+
+		// Using  array to store values
+
+		// if (n == 1 || n == 2)
+		// {
+		// 	System.out.println("1");
+		// }
+		// else
+		// {
+		// 	int cnt = 1;
+		// 	int[] sum = new int[n];
+		// 	sum[0] = 1;
+		// 	sum[1] = 1;
+		// 	while (cnt + 1 != n)
+		// 	{
+		// 		cnt++;
+		// 		sum[cnt] = sum[cnt - 1] + sum[cnt - 2];
+		// 	}
+		// 	System.out.println(sum[cnt]);
+		// }
+
+	}
+
+}
