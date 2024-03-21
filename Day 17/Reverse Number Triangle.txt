@@ -1,0 +1,13 @@
+public class Solution {
+    public static void nNumberTriangle(int n) {
+        // Write your code here
+        for (int i =n; i > 0; i--)
+        {
+            for (int j =i; j > 0; j--)
+            {
+                System.out.print(i-j+1 + " ");
+            }
+            System.out.println();
+        }
+    }
+}
