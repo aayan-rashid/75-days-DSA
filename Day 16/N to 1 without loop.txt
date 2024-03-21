@@ -1,0 +1,23 @@
+public class Solution
+{
+
+    public static void printN(int x, int[] arr)
+    {
+        if (x == 0)
+        {
+            return;
+        }
+        else
+        {
+            arr[arr.length - x] = x;
+            printN(x-1, arr);
+        }
+    }
+
+    public static int[] printNos(int x) {
+        // Write Your Code Here
+        int[] arr = new int[x];
+        printN(x, arr);
+        return arr;
+    }
+}
