@@ -1,0 +1,26 @@
+
+public class Solution {
+
+    public static int[] rev(int n, int[] nums)
+    {
+        int start = 0;
+        int end = n-1;
+        if (start <= end)
+        {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+        return nums;
+    }
+
+    public static int[] reverseArray(int n, int []nums) {
+        // Write your code here.
+
+        rev(n, nums);
+        return nums;
+
+    }
+}
