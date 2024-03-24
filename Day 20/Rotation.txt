@@ -1,0 +1,83 @@
+public class Solution {
+    public static int findKRotation(int []arr)
+    {
+        // Write your code here.
+
+
+        // Using binary search O(logn)
+
+        int ans = Integer.MAX_VALUE;
+        int indx = -1;
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left <= right)
+        {
+            int mid = (left + right)/2;
+
+            if (arr[left] <= arr[right])
+            {
+                if (arr[left] < ans)
+                {
+                    ans = arr[left];
+                    indx = left;
+                    break;
+                }
+            }
+
+            if (arr[left] <= arr[mid]) // left sorted
+            {
+                if (arr[left] < ans)
+                {
+                    ans = arr[left];
+                    indx = left;
+                }
+                left = mid + 1;
+            } 
+            else                         // right sorted 
+            {
+                if (arr[mid]  < arr[right])
+                {
+                    ans = arr[mid];
+                    indx = mid;
+                }
+                right = mid - 1;
+            }
+        }
+
+        return indx; 
+
+
+
+
+
+
+
+        // using linear search O(n)
+
+        // int cnt = 1;
+
+        // for (int i = 0; i< arr.length - 1; i++)
+        // {
+        //     if (arr[i] < arr[i + 1])
+        //     {
+        //         cnt++;
+        //     }
+        //     else
+        //     {
+        //         break;
+        //     }
+        // }
+
+        // if (cnt == arr.length)
+        // {
+        //     return 0;
+        // }
+
+        // return cnt;
+
+
+
+
+    }
+}

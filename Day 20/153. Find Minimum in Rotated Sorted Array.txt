@@ -1,0 +1,52 @@
+class Solution {
+    public int findMin(int[] nums) 
+    {
+        // Using binary search O(logn)
+        
+        int ans = Integer.MAX_VALUE;
+        int left = 0;
+        int right = nums.length - 1;
+
+        while (left <= right)
+        {
+            int mid = (left + right)/2;
+
+            if (nums[left] <= nums[mid]) // left sorted
+            {
+                ans = Math.min(ans, nums[left]);
+                left = mid + 1;
+            } 
+            else                         // right sorted 
+            {
+                ans = Math.min(ans, nums[mid]);
+                right = mid - 1;
+            }
+        }
+
+        return ans;
+
+
+
+
+
+
+
+
+
+
+
+
+        // Using linear search O(n)
+        // int ans = Integer.MAX_VALUE;
+
+        // for (int i = 0; i< nums.length; i++)    
+        // {
+        //     if (nums[i] < ans)
+        //     {
+        //         ans = nums[i];
+        //     }
+        // }
+
+        // return ans;
+    }
+}

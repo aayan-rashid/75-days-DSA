@@ -1,0 +1,28 @@
+public class Solution {
+    public static int findMin(int []arr) {
+        // Write your code here.
+        // Using binary search O(logn)
+        
+        int ans = Integer.MAX_VALUE;
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left <= right)
+        {
+            int mid = (left + right)/2;
+
+            if (arr[left] <= arr[mid]) // left sorted
+            {
+                ans = Math.min(ans, arr[left]);
+                left = mid + 1;
+            } 
+            else                         // right sorted 
+            {
+                ans = Math.min(ans, arr[mid]);
+                right = mid - 1;
+            }
+        }
+
+        return ans;
+    }
+}

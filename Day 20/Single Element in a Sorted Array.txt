@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+public class Solution
+{
+    public static int singleNonDuplicate(ArrayList<Integer> arr)
+    {
+        //    Write your code here.
+
+        int left = 0;
+        int right = arr.size() - 1;
+
+        if (arr.size() == 1)
+        {
+            return arr.get(0);
+        }
+        if (arr.size() == 2)
+        {
+            if (arr.get(0) != arr.get(1))
+            {
+                return arr.get(0);
+            }
+        }
+
+        while (left <= right)    
+        {
+
+            if (arr.get(left) != arr.get(left + 1))
+            {
+                return arr.get(left);
+            }
+            else if (arr.get(right) != arr.get(right - 1))
+            {
+                return arr.get(right);
+            }   
+            else
+            {
+                left += 2;
+                right -= 2;
+            }
+        }
+
+        return -1;
+    }
+}

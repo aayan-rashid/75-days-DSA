@@ -1,0 +1,52 @@
+public class Solution {
+    public static boolean searchInARotatedSortedArrayII(int []A, int key) {
+
+        // Write your code here.
+
+        int left = 0;
+        int right = A.length - 1;
+
+        while (left <= right)    
+        {
+            int mid = (left + right)/2;
+
+            if (A[mid] == key)
+            {
+                return true;
+            }
+
+            if (A[left] == A[mid] && A[mid] == A[right])
+            {
+                right--;
+                left++;
+                continue;
+            }
+
+
+            if (A[left] <= A[mid]) // left sorted
+            {
+                if (key <= A[mid] && key >= A[left]) 
+                {
+                    right = mid - 1; // search in left part
+                } 
+                else 
+                {
+                    left = mid + 1; // search in right part
+                }
+            } 
+            else // right sorted
+            {
+                if (key >= A[mid] && key <= A[right]) 
+                {
+                    left = mid + 1; // search in right part
+                } 
+                else 
+                {
+                    right = mid - 1; // search in left part
+                }
+            }
+        }
+
+        return false;
+    }
+}

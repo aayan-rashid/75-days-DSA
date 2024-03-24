@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+
+public class Solution {
+    public static int search(ArrayList<Integer> arr, int n, int k) {
+        // Write your code here.
+
+        int ans = -1;
+
+        int left = 0;
+        int right = n - 1;
+
+        while (left <= right) {
+            int mid = (left + right) / 2;
+
+            if (arr.get(mid) == k) {
+                return mid;
+            }
+
+            if (arr.get(left) <= arr.get(mid)) // left sorted
+            {
+                if (k <= arr.get(mid) && k >= arr.get(left)) 
+                {
+                    right = mid - 1; // search in left part
+                } 
+                else 
+                {
+                    left = mid + 1; // search in right part
+                }
+            } 
+            else // right sorted
+            {
+                if (k >= arr.get(mid) && k <= arr.get(right)) 
+                {
+                    left = mid + 1; // search in right part
+                } 
+                else 
+                {
+                    right = mid - 1; // search in left part
+                }
+            }
+
+        }
+
+        return ans;
+    }
+}
