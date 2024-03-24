@@ -1,0 +1,128 @@
+class Solution {
+
+    public static int lowbound(int[] nums, int target)
+    {
+        int lowbound = nums.length;
+        int left = 0;
+        int right = nums.length - 1;
+
+        while (left <= right)
+        {
+            int mid = (left + right)/2;
+
+            if (nums[mid] >= target)
+            {
+                lowbound = mid;
+                right = mid - 1;
+            }
+            else
+            {
+                left = mid + 1;
+            }   
+        }
+
+        return lowbound;
+    }
+
+    public static int uppbound(int[] nums, int target)
+    {
+        int highbound = -1;
+        int left = 0;
+        int right = nums.length - 1;
+
+        while (left <= right)
+        {
+            int mid = (left + right)/2;
+
+            if (nums[mid] <= target)
+            {
+                highbound = mid;
+                left = mid + 1;
+            }
+            else
+            {
+                right = mid - 1;
+            }   
+        }
+        
+        return highbound;
+    }
+
+
+
+
+    public int[] searchRange(int[] nums, int target) {
+
+        int[] ans = new int[2];
+
+        ans[0] = -1;
+        ans[1] = -1;
+
+        ans[0] = lowbound(nums, target);
+
+        if (ans[0] == nums.length || nums[ans[0]] != target)
+        {
+            ans[0] = -1;
+            return ans;
+        }
+
+        ans[1] = uppbound(nums, target);
+
+        return ans;
+
+
+
+
+
+        
+        // Using array O(n)
+        // int[] ans = new int[2];
+        // ans[0] = -1;
+        // ans[1] = -1;
+
+
+        // for (int i = 0; i< nums.length; i++)
+        // {
+        //     if (nums[i] == target)
+        //     {
+        //         if (ans[0] == -1)
+        //         {
+        //             ans[0] = i;
+        //         }
+        //         ans[1] = i;
+        //     }
+        // }
+
+        // return ans;
+
+
+
+        // Using Array list to store index
+
+        // List<Integer> list = new ArrayList<>();
+        // int cnt = -1;
+
+        // for (int i = 0; i < nums.length; i++)
+        // {
+        //     if (nums[i] == target)
+        //     {
+        //         list.add(i);
+        //     }
+        // }
+
+        // if (list.isEmpty())
+        // {
+        //     int[] ans = new int[2];
+        //     ans[0] = -1;
+        //     ans[1] = -1;
+        //     return ans;
+        // }
+
+        // int[] ans = new int[2];
+        // ans[0] = list.get(0);
+        // ans[1] = list.get(list.size() - 1);
+
+        // return ans;
+        
+    }
+}
