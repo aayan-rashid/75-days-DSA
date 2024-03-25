@@ -1,0 +1,53 @@
+
+public class Solution {
+    class Queue {
+        int front, rear;
+        int []arr;
+        int cnt = 0;
+
+        Queue() {
+            front = 0;
+            rear = 0;
+            arr = new int[100001];
+        }
+
+        // Enqueue (add) element 'e' at the end of the queue.
+        public void enqueue(int e) {
+            // Write your code here.
+            if (cnt == arr.length)
+            {
+                return;
+            }
+
+            // if (rear >= arr.length)
+            // {
+            //     arr[rear % arr.length] = e;
+            //     rear++;
+            // }
+            // else
+            // {   
+            //     arr[rear] = e;
+            //     rear++;
+            // }
+
+            arr[rear % arr.length] = e;
+            rear++;
+
+            cnt++;
+        }
+
+        // Dequeue (retrieve) the element from the front of the queue.
+        public int dequeue() {
+            // Write your code here.
+            if (front == rear)
+            {
+                return -1;
+            }
+            int top = arr[front];
+            cnt--;
+            front++;
+            return top;
+
+        }
+    }
+}
